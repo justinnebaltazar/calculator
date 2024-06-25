@@ -29,3 +29,18 @@ function operate(operator, a, b) {
         divide(a, b);
     }
 };
+
+function getNumbers() {
+    let numbers = Array.from(document.getElementsByClassName('number'));
+    let display = document.getElementById('user-input');
+    let string = '';
+
+    numbers.forEach((num) => {
+        num.addEventListener('click', (event) => {
+            string += num.textContent;
+            display.textContent = string;
+        });
+    });
+}
+
+getNumbers();
