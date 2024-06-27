@@ -41,6 +41,23 @@ function getNumbers() {
             display.textContent = string;
         });
     });
+    return string;
 }
 
-getNumbers();
+let firstNum = getNumbers(); 
+
+function getOperator() {
+    let operators = Array.from(document.getElementsByClassName('operator'));
+    let operation = '';
+    operators.forEach((op) => {
+        op.addEventListener('click', (event) => {
+            operation += operate.id;
+        })
+    })
+    return operation;
+}
+
+let secondNum = getNumbers();
+let operationChosen = getOperator();
+let result = operate(operationChosen, parseInt(firstNum), parseInt(secondNum));
+
