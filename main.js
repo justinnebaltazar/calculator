@@ -21,6 +21,10 @@ function divide(a, b) {
     return quotient;
 };
 
+function convertToDecimal(a) {
+    return (parseFloat(a) / 100).toString();
+}
+
 function operate(operator, a, b) {
     if (operator.toLowerCase() === 'add') {
         return add(a, b);
@@ -119,6 +123,19 @@ function getNumbersAndOperators() {
             firstNum = currentInput;
         } else {
             secondNum = currentInput;
+        }
+    });
+
+    let percentButton = document.getElementById('percent'); 
+    percentButton.addEventListener('click', (event) => {
+        if (currentInput !== '') {
+            currentInput = convertToDecimal(currentInput);
+            display.textContent = currentInput;
+            if (!operation) {
+                firstNum = currentInput;
+            } else {
+                secondNum = currentInput;
+            }
         }
     });
 };
