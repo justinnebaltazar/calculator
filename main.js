@@ -62,33 +62,18 @@ function getNumbersAndOperators() {
         });
     });
 
-};
-
-
-
-function getNumbers() {
-    let numbers = Array.from(document.getElementsByClassName('number'));
-    let display = document.getElementById('user-input');
-    let string = '';
-
-    numbers.forEach((num) => {
-        num.addEventListener('click', (event) => {
-            string += num.textContent;
-            display.textContent = string;
-        });
+    let equalsButton = document.getElementById('equals'); 
+    equalsButton.addEventListener('click', (event) => {
+        if(firstNum && secondNum && operation) {
+            let result = operate(operator, parseFloat(firstNum), parseFloat(secondNum));
+            display.textContent = result; 
+            // treats calculated number as the new firstNum to be used for next operation
+            firstNum = result.toString();
+            // reset variables for next input
+            secondNum = '';
+            operation = '';
+            currentInput = '';
+        }
     });
 
-    return string;
-}
-
-function getOperator() {
-    let operators = Array.from(document.getElementsByClassName('operator'));
-    let operation = '';
-    operators.forEach((op) => {
-        op.addEventListener('click', (event) => {
-            operation += operate.id;
-        })
-    })
-    return operation;
-}
-
+};
