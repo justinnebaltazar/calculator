@@ -84,8 +84,23 @@ function getNumbersAndOperators() {
         secondNum = ''; 
         operation = '';
     });
-    
 
+    let negativeButton = document.getElementById('negative');
+    let tempNum = currentInput;
+    negativeButton.addEventListener('click', (event) => {
+        if(firstNum) {
+            tempNum = parseFloat(currentInput) * -1;
+            firstNum = tempNum.toString();
+            currentInput = firstNum;
+            display.textContent = currentInput; 
+
+        } else if (firstNum && secondNum) {
+            tempNum = parseFloat(currentInput) * -1;
+            secondNum = tempNum.toString();
+            currentInput = secondNum; 
+            display.textContent = currentInput; 
+        }
+    });
 };
 
 getNumbersAndOperators();
