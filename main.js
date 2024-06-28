@@ -69,7 +69,10 @@ function getNumbersAndOperators() {
     equalsButton.addEventListener('click', (event) => {
         if(firstNum && secondNum && operation) {
             let result = operate(operation, parseFloat(firstNum), parseFloat(secondNum));
-            display.textContent = result; 
+            if(result.toString().length > 9) {
+                result = result.toString().slice(0, 9);
+            }
+            display.textContent = result;
             // treats calculated number as the new firstNum to be used for next operation
             firstNum = result.toString();
             // reset variables for next input
