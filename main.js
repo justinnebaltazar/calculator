@@ -65,7 +65,7 @@ function getNumbersAndOperators() {
     let equalsButton = document.getElementById('equals'); 
     equalsButton.addEventListener('click', (event) => {
         if(firstNum && secondNum && operation) {
-            let result = operate(operator, parseFloat(firstNum), parseFloat(secondNum));
+            let result = operate(operation, parseFloat(firstNum), parseFloat(secondNum));
             display.textContent = result; 
             // treats calculated number as the new firstNum to be used for next operation
             firstNum = result.toString();
@@ -76,4 +76,16 @@ function getNumbersAndOperators() {
         }
     });
 
+    let clearButton = document.getElementById('clear');
+    clearButton.addEventListener('click', (event) => {
+        firstNum = ''; 
+        display.textContent = ''; 
+        currentInput = '';
+        secondNum = ''; 
+        operation = '';
+    });
+    
+
 };
+
+getNumbersAndOperators();
