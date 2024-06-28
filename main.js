@@ -86,6 +86,7 @@ function getNumbersAndOperators() {
         currentInput = '';
         secondNum = ''; 
         operation = '';
+        decimal = '';
     });
 
     let negativeButton = document.getElementById('negative');
@@ -104,6 +105,27 @@ function getNumbersAndOperators() {
             display.textContent = currentInput; 
         }
     });
+
+    let decimalButton = document.getElementById('decimal'); 
+    let decimal = '';
+    decimalButton.addEventListener('click', (event) => {
+        if(!decimal) {
+            decimal += '.';
+            if(firstNum) {
+                firstNum = firstNum + decimal;
+                currentInput = firstNum;
+                display.textContent = currentInput; 
+            } else if (secondNum) {
+                secondNum = secondNum + decimal;
+                currentInput = secondNum; 
+                display.textContent = currentInput;
+            }
+        } else {
+            secondNum = secondNum + decimal;
+            currentInput = secondNum;
+            display.textContent = currentInput; 
+        } 
+    })
 };
 
 getNumbersAndOperators();
