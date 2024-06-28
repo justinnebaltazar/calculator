@@ -20,15 +20,51 @@ function divide(a, b) {
 
 function operate(operator, a, b) {
     if (operator.toLowerCase() === 'add') {
-        add(a, b);
+        return add(a, b);
     } else if (operator.toLowerCase() === 'subtract') {
-        subtract(a, b); 
+        return subtract(a, b); 
     } else if (operator.toLowerCase() === 'multiply') {
-        multiply(a, b);
+        return multiply(a, b);
     } else if (operator.toLowerCase() === 'divide') {
-        divide(a, b);
+        return divide(a, b);
     }
+    return null;
 };
+
+// initialize the a and b values
+let firstNum = ''; 
+let secondNum = ''; 
+let operation = '';
+
+function getNumbersAndOperators() {
+    let numbers = Array.from(document.getElementsByClassName('number'));
+    let operators = Array.from(document.getElementsByClassName('operator'));
+    let display = document.getElementById('user-input');
+    let currentInput = '';
+
+    numbers.forEach((num) => {
+        num.addEventListener('click', (event) => {
+            currentInput += num.textContent;
+            display.textContent = currentInput; 
+            if(!operation) {
+                firstNum = currentInput;
+            } else {
+                secondNum = currentInput; 
+            }
+        });
+    });
+
+    operators.forEach((op) => {
+        op.addEventListener('click', (event) => {
+            operation = op.id;
+            display.textContent += ` ${op.textContent}`; 
+            currentInput = '';
+        });
+    });
+
+};
+
+
 
 function getNumbers() {
     let numbers = Array.from(document.getElementsByClassName('number'));
@@ -41,10 +77,9 @@ function getNumbers() {
             display.textContent = string;
         });
     });
+
     return string;
 }
-
-let firstNum = getNumbers(); 
 
 function getOperator() {
     let operators = Array.from(document.getElementsByClassName('operator'));
@@ -56,8 +91,4 @@ function getOperator() {
     })
     return operation;
 }
-
-let secondNum = getNumbers();
-let operationChosen = getOperator();
-let result = operate(operationChosen, parseInt(firstNum), parseInt(secondNum));
 
