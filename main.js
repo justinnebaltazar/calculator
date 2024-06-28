@@ -14,6 +14,9 @@ function multiply(a, b) {
 };
 
 function divide(a, b) {
+    if (b === 0) {
+        return "Error."
+    }
     let quotient = a / b; 
     return quotient;
 };
@@ -73,7 +76,7 @@ function getNumbersAndOperators() {
             secondNum = '';
             operation = '';
             currentInput = '';
-        }
+        } 
     });
 
     let clearButton = document.getElementById('clear');
