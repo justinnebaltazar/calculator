@@ -1,9 +1,37 @@
+body {
+    height: 10rem;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
 #container {
-    display: flex;
-    flex-direction: column;
+    max-inline-size: 22rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15), 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
 }
 
-.numbers {
-    display: flex;
+.display-input {
+    font-size: 2rem;
+    text-align: end;
+    background-color: grey;
+    color: whitesmoke;
+    padding-block-start: 0.25rem;
+    padding-block-end: 0.25rem;
+    padding-inline-end: 0.75rem;
 }
 
+button {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.calculator-keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+#equals {
+    grid-column: 3 / 5;
+}
